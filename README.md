@@ -1,5 +1,5 @@
 # 🤖 RG-VLM: Unleashing Reasoning Generation in Vision Language Models with RGPO
-[Yicheng Xiao<sup><span>1,2</span></sup>](https://easonxiao-888.github.io/), [Lin Song<sup><span>2,📧,*</span></sup>](https://linsong.info/), [Yukang Chen<sup>3</sup>](https://scholar.google.com/citations?user=o31BPFsAAAAJ&hl=en&oi=ao), [Yingmin Luo<sup><span>2</span></sup>](), [Yuxin Chen<sup><span>2</span></sup>](), [Yukang Gan<sup><span>2</span></sup>](), [Wei Huang<sup><span>4</span></sup>](), [Xiu Li<sup><span>1,📧</span></sup>](), [Xiaojuan Qi<sup><span>4</span></sup>]() and [Ying Shan<sup><span>2</span></sup>]()
+[Yicheng Xiao<sup><span>1,2</span></sup>](https://easonxiao-888.github.io/), [Lin Song<sup><span>2,📧,*</span></sup>](https://linsong.info/), [Yukang Chen<sup>3</sup>](https://yukangchen.com/), [Yingmin Luo<sup><span>2</span></sup>](), [Yuxin Chen<sup><span>2</span></sup>](), [Yukang Gan<sup><span>2</span></sup>](), [Wei Huang<sup><span>4</span></sup>](https://scholar.google.com/citations?user=rZVUlPAAAAAJ&hl=zh-CN), [Xiu Li<sup><span>1,📧</span></sup>](), [Xiaojuan Qi<sup><span>4</span></sup>](https://scholar.google.com/citations?hl=en&user=bGn0uacAAAAJ&view_op=list_works&sortby=pubdate) and [Ying Shan<sup><span>2</span></sup>]()
 
 <sup><span>*</span></sup> Project Lead  <sup><span>📧</span></sup> Corresponding author
 
@@ -21,14 +21,14 @@ Figure 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” 
 
 &nbsp;
 
-**More reuslts about text2image generation and vision editing, please refer to our Homepage or paper.**
-## ⚓ Inference Pipeline
+**More reuslts about text2image generation and vision editing, please refer to our [project page](https://rg-vlm.github.io/) or [paper](https://arxiv.org/pdf/2406.02395).**
+## ⚓ Inference Framework
 <p align="center">
  <img src="assets/inference.png" width="100%">
 </p>
 Figure 2: Overview of our inference framework. RG-VLM accomplishes vision understanding, multimodal reasoning generation, and vision editing tasks in a unified large model.
 
-## ⛲ Three-stage Training Framework
+## ⛲ Three-stage Training Pipeline
 <p align="center">
  <img src="assets/framework.png" width="100%">
 </p>
