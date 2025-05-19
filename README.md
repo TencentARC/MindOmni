@@ -5,7 +5,7 @@
 
 <sup>1</sup> THU  <sup>2</sup> ARC Lab, Tencent PCG  <sup>3</sup> CUHK  <sup>4</sup> HKU
 
-<a href='https://arxiv.org/pdf/2406.02395'><img src='https://img.shields.io/badge/ArXiv-2406.02395-red'></a> 
+<!-- <a href='https://arxiv.org/pdf/2406.02395'><img src='https://img.shields.io/badge/ArXiv-2406.02395-red'></a>  -->
 
 ## 📖 Abstract
 Recent text-to-image systems face limitations in handling multimodal inputs and complex reasoning tasks. We introduce RG-VLM, a unified multimodal large language model that addresses these challenges by incorporating reasoning generation through reinforcement learning. RG-VLM leverages a three-phase training strategy: i) design of a unified vision language model with a decoder-only diffusion module, ii) supervised fine-tuning with Chain-of-Thought (CoT) instruction data, and iii) our proposed Reasoning Generation Policy Optimization (RGPO) algorithm, utilizing multimodal feedback to effectively guide policy updates. Experimental results demonstrate that RG-VLM outperforms existing models, achieving impressive performance on both understanding and generation benchmarks, meanwhile showcasing advanced fine-grained reasoning generation capabilities, especially with mathematical reasoning instruction.
@@ -39,7 +39,7 @@ Figure 3: Overview of Training Pipeline. We propose a three-stage training frame
 <p align="center">
  <img src="assets/und_results.png" width="40%">
 </p>
-Table 1: Performance comparison on GenEval and DPG-Bench. “Und.” and “Gen.” denote “understanding” and “generation”, respectively. † indicates using the rewritten prompts, which may improve the accuracy significantly. "Size" of unified models refers to the size of the LLM backbone.
+Table 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” and “Gen.” denote “understanding” and “generation,” respectively.
 
 ---
 
@@ -53,7 +53,14 @@ Table 2: Performance comparison on GenEval and DPG-Bench. “Und.” and “Gen.
 <p align="center">
  <img src="assets/wise_results.png" width="80%">
 </p>
-Table 3: Overview of Training Pipeline. We propose a three-stage training framework comprising pretraining, instruction-based supervised fine-tuning, and reinforcement learning with RGPO.
+Table 3: Comparison with state-of-the-arts on WISE benchmark.
+
+---
+
+<p align="center">
+ <img src="assets/grpo_curve.png" width="100%">
+</p>
+Table 4: Curves of different Metric in RGPO.
 
 ## 🍺 Model Zoo
 Coming Soon
