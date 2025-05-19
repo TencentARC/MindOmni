@@ -1,15 +1,15 @@
-# 🤖 RG-VLM: Unleashing Reasoning Generation in Vision Language Models with RGPO
+# 🤖 MindOmni: Unleashing Reasoning Generation in Vision Language Models with RGPO
 [Yicheng Xiao<sup><span>1,2</span></sup>](https://easonxiao-888.github.io/), [Lin Song<sup><span>2,📧,*</span></sup>](https://linsong.info/), [Yukang Chen<sup>3</sup>](https://yukangchen.com/), [Yingmin Luo<sup><span>2</span></sup>](), [Yuxin Chen<sup><span>2</span></sup>](), [Yukang Gan<sup><span>2</span></sup>](), [Wei Huang<sup><span>4</span></sup>](https://scholar.google.com/citations?user=rZVUlPAAAAAJ&hl=zh-CN), [Xiu Li<sup><span>1,📧</span></sup>](), [Xiaojuan Qi<sup><span>4</span></sup>](https://scholar.google.com/citations?hl=en&user=bGn0uacAAAAJ&view_op=list_works&sortby=pubdate) and [Ying Shan<sup><span>2</span></sup>]()
 
 <sup><span>*</span></sup> Project Lead  <sup><span>📧</span></sup> Corresponding author
 
 <sup>1</sup> THU  <sup>2</sup> ARC Lab, Tencent PCG  <sup>3</sup> CUHK  <sup>4</sup> HKU
 
-<a href='https://arxiv.org/pdf/2406.02395'><img src='https://img.shields.io/badge/ArXiv-2406.02395-red'></a>
-<a href='https://rg-vlm.github.io/'><img src='https://img.shields.io/badge/HomePage-f36f43'></a> 
+<a href=pdf/MindOmni_arxiv.pdf><img src='https://img.shields.io/badge/ArXiv-Paper-red'></a>
+<a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/HomePage-f36f43'></a> 
 
 ## 📖 Abstract
-Recent text-to-image systems face limitations in handling multimodal inputs and complex reasoning tasks. We introduce RG-VLM, a unified multimodal large language model that addresses these challenges by incorporating reasoning generation through reinforcement learning. RG-VLM leverages a three-phase training strategy: i) design of a unified vision language model with a decoder-only diffusion module, ii) supervised fine-tuning with Chain-of-Thought (CoT) instruction data, and iii) our proposed Reasoning Generation Policy Optimization (RGPO) algorithm, utilizing multimodal feedback to effectively guide policy updates. Experimental results demonstrate that RG-VLM outperforms existing models, achieving impressive performance on both understanding and generation benchmarks, meanwhile showcasing advanced fine-grained reasoning generation capabilities, especially with mathematical reasoning instruction.
+Recent text-to-image systems face limitations in handling multimodal inputs and complex reasoning tasks. We introduce MindOmni, a unified multimodal large language model that addresses these challenges by incorporating reasoning generation through reinforcement learning. MindOmni leverages a three-phase training strategy: i) design of a unified vision language model with a decoder-only diffusion module, ii) supervised fine-tuning with Chain-of-Thought (CoT) instruction data, and iii) our proposed Reasoning Generation Policy Optimization (RGPO) algorithm, utilizing multimodal feedback to effectively guide policy updates. Experimental results demonstrate that MindOmni outperforms existing models, achieving impressive performance on both understanding and generation benchmarks, meanwhile showcasing advanced fine-grained reasoning generation capabilities, especially with mathematical reasoning instruction.
 
 ---
 
@@ -22,12 +22,12 @@ Figure 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” 
 
 &nbsp;
 
-**More reuslts about text2image generation and vision editing, please refer to our [project page](https://rg-vlm.github.io/) or [paper](https://arxiv.org/pdf/2406.02395).**
+**More reuslts about text2image generation and vision editing, please refer to our [project page](https://MindOmni.github.io/) or [paper](https://arxiv.org/pdf/2406.02395).**
 ## ⚓ Inference Framework
 <p align="center">
  <img src="assets/inference.png" width="100%">
 </p>
-Figure 2: Overview of our inference framework. RG-VLM accomplishes vision understanding, multimodal reasoning generation, and vision editing tasks in a unified large model.
+Figure 2: Overview of our inference framework. MindOmni accomplishes vision understanding, multimodal reasoning generation, and vision editing tasks in a unified large model.
 
 ## ⛲ Three-stage Training Pipeline
 <p align="center">
@@ -36,7 +36,7 @@ Figure 2: Overview of our inference framework. RG-VLM accomplishes vision unders
 Figure 3: Overview of Training Pipeline. We propose a three-stage training framework comprising pretraining, instruction-based supervised fine-tuning, and reinforcement learning with RGPO.
 
 ---
-## 🛠️ Environment Results
+## 🛠️ Experimental Results
 <p align="center">
  <img src="assets/und_results.png" width="40%">
 </p>
@@ -69,7 +69,7 @@ Coming Soon
 ## ⭐️ BibTeX
 If you find this work useful for your research, please cite:
 ```
-@article{xiao2025RG-VLM,
+@article{xiao2025MindOmni,
   title={Unleashing Reasoning Generation in Vision Language Models with RGPO},
   author={Xiao, Yicheng and Song, Lin and etc.},
   year={2025}
