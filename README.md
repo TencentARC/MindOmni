@@ -5,7 +5,8 @@
 
 <sup>1</sup> THU  <sup>2</sup> ARC Lab, Tencent PCG  <sup>3</sup> CUHK  <sup>4</sup> HKU
 
-<!-- <a href='https://arxiv.org/pdf/2406.02395'><img src='https://img.shields.io/badge/ArXiv-2406.02395-red'></a>  -->
+<a href='https://arxiv.org/pdf/2406.02395'><img src='https://img.shields.io/badge/ArXiv-2406.02395-red'></a>
+<a href='https://rg-vlm.github.io/'><img src='https://img.shields.io/badge/HomePage-f36f43'></a> 
 
 ## 📖 Abstract
 Recent text-to-image systems face limitations in handling multimodal inputs and complex reasoning tasks. We introduce RG-VLM, a unified multimodal large language model that addresses these challenges by incorporating reasoning generation through reinforcement learning. RG-VLM leverages a three-phase training strategy: i) design of a unified vision language model with a decoder-only diffusion module, ii) supervised fine-tuning with Chain-of-Thought (CoT) instruction data, and iii) our proposed Reasoning Generation Policy Optimization (RGPO) algorithm, utilizing multimodal feedback to effectively guide policy updates. Experimental results demonstrate that RG-VLM outperforms existing models, achieving impressive performance on both understanding and generation benchmarks, meanwhile showcasing advanced fine-grained reasoning generation capabilities, especially with mathematical reasoning instruction.
