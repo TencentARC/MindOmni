@@ -69,9 +69,10 @@ Coming Soon
 ## ⭐️ BibTeX
 If you find this work useful for your research, please cite:
 ```
-@article{xiao2025MindOmni,
-  title={Unleashing Reasoning Generation in Vision Language Models with RGPO},
-  author={Xiao, Yicheng and Song, Lin and etc.},
+@article{xiao2025mindomni,
+  title={MindOmni: Unleashing Reasoning Generation in Vision Language Models with RGPO},
+  author={Xiao, Yicheng and Song, Lin and Chen, Yukang and Luo, Yingmin and Chen, Yuxin and Gan, Yukang and Huang, Wei and Li, Xiu and Qi, Xiaojuan and Shan, Ying},
+  journal={arXiv preprint arXiv:2505.13031},
   year={2025}
 }
 ```
