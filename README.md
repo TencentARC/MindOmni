@@ -74,7 +74,7 @@ Table 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” a
 |      | **MindOmni**| 0.99 | 0.94 | 0.71 | 0.90 | 0.71 | 0.71 | 0.83 |
 
 
-Table 2: Performance comparison on GenEval-Bench. “Und.” and “Gen.” denote “understanding” and “generation”, respectively. † indicates using the rewritten prompts, which may improve the accuracy significantly. "Size" of unified models refers to the size of the LLM backbone.
+Table 2: Performance comparison on GenEval-Bench. “Und.” and “Gen.” denote “understanding” and “generation”, respectively. † indicates using the rewritten prompts, which may improve the accuracy significantly.
 
 ---
 
