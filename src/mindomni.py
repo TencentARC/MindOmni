@@ -4,6 +4,7 @@ import torch.nn as nn
 from .image_decoder import Phi3DecoderLayer, ImageDecoderPipeline, OmniGenProcessor
 import os
 import torch
+from huggingface_hub import snapshot_download
 from safetensors.torch import load_file
 from typing import Union
 from diffusers.utils import logging
@@ -55,6 +56,10 @@ class MindOmni:
 
     @classmethod
     def from_pretrained(cls, model_path):
+        if not os.path.exists(model_path):
+            cache_folder = os.getenv('HF_HUB_CACHE')
+            model_path = snapshot_download(repo_id=model_path,
+                                           cache_dir=cache_folder)
         mllm = MindOmniMLLM.from_pretrained(os.path.join(model_path, 'mllm'))
         image_decoder = OmniGen.from_pretrained(os.path.join(model_path, 'image_decoder'))
         connector = MindOmniConnector(mllm.config, image_decoder.llm.config, 2).connector

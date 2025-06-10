@@ -20,7 +20,7 @@ def parse_args():
     args.add_argument('--server_name', type=str, default='127.0.0.1')
     args.add_argument('--port', type=int, default=8080)
     args.add_argument('--model_path', type=str,
-                      default='your_path/MindOmni')
+                      default='EasonXiao-888/MindOmni')
     args = args.parse_args()
     return args
 
