@@ -5,9 +5,9 @@
 
 <sup>1</sup> THU  <sup>2</sup> ARC Lab, Tencent PCG  <sup>3</sup> CUHK  <sup>4</sup> HKU
 
-<a href="https://arxiv.org/pdf/2505.13031"><img src='https://img.shields.io/badge/ArXiv-2505.13031-red'></a>
-<a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/HomePage-f36f43'></a> 
-<a href='https://huggingface.co/spaces/stevengrove/MindOmni'><img src='https://img.shields.io/badge/DEMO-f2b444'></a> 
+<a href="https://arxiv.org/pdf/2505.13031"><img src='https://img.shields.io/badge/MindOmni-Paper-red'></a>
+<a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/MindOmni-HomePage-yellow?logo=huggingface&logoColor=yellow'></a> 
+<a href='https://huggingface.co/spaces/stevengrove/MindOmni'><img src='https://img.shields.io/badge/MindOmni-Demo-blue?logo=googleplay&logoColor=blue'></a> 
 
 
 ## 📚 News
