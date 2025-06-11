@@ -105,7 +105,7 @@ Table 3: Performance comparison on DPG-Bench. “Und.” and “Gen.” denote �
 |                | MetaQuery-XL | 0.56 | 0.55 | 0.62 | 0.49 | 0.63 | 0.41 | 0.55 |
 |                | BLIP-3o | - | - | - | - | - | - | 0.52 |
 |                | **MindOmni (W/O Thinking)** | 0.40 | 0.38 | 0.62 | 0.36 | 0.52 | 0.32 | 0.43 |
-|                | **MindOmni (W/ Thinking)** | 0.75 | 0.68 | 0.76 | 0.68 | 0.70 | 0.53 | 0.71 |
+|                | **MindOmni (W/ Thinking)** | 0.75 | 0.70 | 0.76 | 0.76 | 0.72 | 0.52 | 0.71 |
 
 Table 3: Comparison with state-of-the-arts on WISE benchmark.
 
