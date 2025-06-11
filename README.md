@@ -25,7 +25,14 @@ reasoning generation task, including GPT-4o and Gemini-2.5. In the absence of a 
 <p align="center">
  <img src="assets/reasoning_case_com.png" width="100%">
 </p>
-Figure 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” and “Gen.” denote “understanding” and “generation,” respectively.
+Figure 1: Performance comparison on reasoning-aware image generation.
+
+&nbsp;
+
+<p align="center">
+ <img src="assets/reasoning_case_com_mm.png" width="100%">
+</p>
+Figure 2: Performance comparison on reasoning-aware image generation with multimodal user input.
 
 &nbsp;
 
@@ -34,13 +41,13 @@ Figure 1: Performance Comparison on Vision Understanding Benchmarks. “Und.” 
 <p align="center">
  <img src="assets/inference.png" width="100%">
 </p>
-Figure 2: Overview of our inference framework. MindOmni accomplishes vision understanding, multimodal reasoning generation, and vision editing tasks in a unified large model.
+Figure 3: Overview of our inference framework. MindOmni accomplishes vision understanding, multimodal reasoning generation, and vision editing tasks in a unified large model.
 
 ## ⛲ Three-stage Training Pipeline
 <p align="center">
  <img src="assets/framework.png" width="100%">
 </p>
-Figure 3: Overview of Training Pipeline. We propose a three-stage training framework comprising pretraining, instruction-based supervised fine-tuning, and reinforcement learning with RGPO.
+Figure 4: Overview of Training Pipeline. We propose a three-stage training framework comprising pretraining, instruction-based supervised fine-tuning, and reinforcement learning with RGPO.
 
 ---
 ## 🛠️ Experimental Results
