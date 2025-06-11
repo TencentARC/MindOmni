@@ -4,10 +4,6 @@ import gc
 
 from PIL import Image
 import torch
-try:
-    import torch_npu
-except Exception as e:
-    print(e)
 from diffusers.models import AutoencoderKL
 from diffusers.utils import logging
 import torch.nn as nn
@@ -37,8 +33,6 @@ class ImageDecoderPipeline:
         if device is None:
             if torch.cuda.is_available():
                 self.device = torch.device("cuda")
-            elif torch_npu.npu.is_available():
-                self.device = torch.device("npu")
             elif torch.backends.mps.is_available():
                 self.device = torch.device("mps")
             else:
@@ -78,8 +72,6 @@ class ImageDecoderPipeline:
         self.vae.to("cpu")
         if torch.cuda.is_available():
             torch.cuda.empty_cache()  # Clear VRAM
-        elif torch_npu.npu.is_available():
-            torch_npu.npu.empty_cache()  # Clear VRAM
         gc.collect()  # Run garbage collection to free system RAM
 
     def disable_model_cpu_offload(self):
@@ -108,7 +100,6 @@ class ImageDecoderPipeline:
     ):
         r"""
         Function invoked when calling the pipeline for generation.
-
         Args:
             prompt (`str` or `List[str]`):
                 The prompt or prompts to guide the image generation.
@@ -144,7 +135,6 @@ class ImageDecoderPipeline:
             output_type (`str`, *optional*, defaults to "pil"):
                 The type of the output image, which can be "pt" or "pil"
         Examples:
-
         Returns:
             A list with the generated images.
         """
@@ -181,7 +171,6 @@ class ImageDecoderPipeline:
                             offload_model=offload_model,
                             )
         # obtain the qwen feature
-        # if self.llm_processor is not None:
         llm_input_embeds = []
         with torch.no_grad():
             # for seperate cfg infer mode
@@ -204,7 +193,6 @@ class ImageDecoderPipeline:
 
                 llm_input_embeds.append(hidden_states)
 
-            # import ipdb; ipdb.set_trace()
             model_kwargs['llm_input_embeds'] = llm_input_embeds
             model_kwargs['llm_attention_mask'] = self.move_to_device(input_data['llm_attention_mask'])
             model_kwargs['llm_position_ids'] = self.move_to_device(input_data['llm_position_ids'])
@@ -222,8 +210,6 @@ class ImageDecoderPipeline:
                     param.data = param.data.to(self.device)
             for buffer_name, buffer in self.model.named_buffers():
                 setattr(self.model, buffer_name, buffer.to(self.device))
-        # else:
-        #     self.model.to(self.device)
 
         scheduler = OmniGenScheduler(num_steps=num_inference_steps)
         samples = scheduler(latents, func, model_kwargs, use_kv_cache=use_kv_cache, offload_kv_cache=offload_kv_cache, tqdm_disable=tqdm_disable)
@@ -233,8 +219,6 @@ class ImageDecoderPipeline:
             self.model.to('cpu')
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()  # Clear VRAM
-            elif torch_npu.npu.is_available():
-                torch_npu.npu.empty_cache()  # Clear VRAM
             gc.collect()
 
         self.vae.to(self.device)
@@ -249,8 +233,6 @@ class ImageDecoderPipeline:
             self.vae.to('cpu')
             if torch.cuda.is_available():
                 torch.cuda.empty_cache()  # Clear VRAM
-            elif torch_npu.npu.is_available():
-                torch_npu.npu.empty_cache()  # Clear VRAM
             gc.collect()
 
         samples = (samples * 0.5 + 0.5).clamp(0, 1)
@@ -266,8 +248,6 @@ class ImageDecoderPipeline:
 
         if torch.cuda.is_available():
             torch.cuda.empty_cache()  # Clear VRAM
-        elif torch_npu.npu.is_available():
-            torch_npu.npu.empty_cache()  # Clear VRAM
         gc.collect()              # Run garbage collection to free system RAM
 
         return output_images

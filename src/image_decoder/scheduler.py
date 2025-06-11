@@ -3,22 +3,15 @@ from typing import Optional, Dict, Any, Tuple, List
 import gc
 
 import torch
-try:
-    import torch_npu
-except Exception as e:
-    print(e)
+
 from transformers.cache_utils import DynamicCache
 
 
 class OmniGenCache(DynamicCache):
     def __init__(self, num_tokens_for_img: int, offload_kv_cache: bool = False) -> None:
-        # if not torch.cuda.is_available():
-        #     # print("No avaliable GPU, offload_kv_cache wiil be set to False, which will result in large memory usage and time cost when input multiple images!!!")
-        #     # offload_kv_cache = False
-        #     raise RuntimeError("OffloadedCache can only be used with a GPU. If there is no GPU, you need to set use_kv_cache=False, which will result in longer inference time!")
         super().__init__()
         self.original_device = []
-        self.prefetch_stream = torch.cuda.Stream() if torch.cuda.is_available() else torch_npu.npu.Stream()
+        self.prefetch_stream = torch.cuda.Stream()
         self.num_tokens_for_img = num_tokens_for_img
         self.offload_kv_cache = offload_kv_cache
 
@@ -27,12 +20,6 @@ class OmniGenCache(DynamicCache):
         if layer_idx < len(self):
             if torch.cuda.is_available():
                 with torch.cuda.stream(self.prefetch_stream):
-                    # Prefetch next layer tensors to GPU
-                    device = self.original_device[layer_idx]
-                    self.key_cache[layer_idx] = self.key_cache[layer_idx].to(device, non_blocking=True)
-                    self.value_cache[layer_idx] = self.value_cache[layer_idx].to(device, non_blocking=True)
-            else:
-                with torch_npu.npu.stream(self.prefetch_stream):
                     # Prefetch next layer tensors to GPU
                     device = self.original_device[layer_idx]
                     self.key_cache[layer_idx] = self.key_cache[layer_idx].to(device, non_blocking=True)
@@ -56,15 +43,11 @@ class OmniGenCache(DynamicCache):
                 # Evict the previous layer if necessary
                 if torch.cuda.is_available():
                     torch.cuda.current_stream().synchronize()
-                else:
-                    torch_npu.npu.current_stream().synchronize()
                 self.evict_previous_layer(layer_idx)
                 # Load current layer cache to its original device if not already there
                 # self.prefetch_stream.synchronize(original_device)
                 if torch.cuda.is_available():
                     torch.cuda.synchronize(self.prefetch_stream)
-                else:
-                    torch_npu.npu.synchronize(self.prefetch_stream)
                 key_tensor = self.key_cache[layer_idx]
                 value_tensor = self.value_cache[layer_idx]
 
@@ -188,7 +171,5 @@ class OmniGenScheduler:
         del cache
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
-        else:
-            torch_npu.npu.empty_cache()
         gc.collect()
         return z

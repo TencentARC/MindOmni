@@ -7,11 +7,13 @@
 
 <a href="https://arxiv.org/pdf/2505.13031"><img src='https://img.shields.io/badge/ArXiv-2505.13031-red'></a>
 <a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/HomePage-f36f43'></a> 
+<a href='https://huggingface.co/spaces/stevengrove/MindOmni'><img src='https://img.shields.io/badge/DEMO-f2b444'></a> 
 
 
 ## 📚 News
 - [2025/05/19] 🔥 We release our [paper](https://arxiv.org/pdf/2406.02395)
 - [2025/06/07] 🔥 The latest model after proposed RGPO tuning is publicly available on [Hugging Face](https://huggingface.co/EasonXiao-888/MindOmni).
+- [2025/06/11] 🔥 Please feel free to explore our online [demo](https://huggingface.co/spaces/stevengrove/MindOmni) to better understand the model’s capabilities.
 
 ## 📖 Abstract
 Recent text-to-image systems face limitations in handling multimodal inputs and complex reasoning tasks. We introduce MindOmni, a unified multimodal large language model that addresses these challenges by incorporating reasoning generation through reinforcement learning. MindOmni leverages a three-phase training strategy: i) design of a unified vision language model with a decoder-only diffusion module, ii) supervised fine-tuning with Chain-of-Thought (CoT) instruction data, and iii) our proposed Reasoning Generation Policy Optimization (RGPO) algorithm, utilizing multimodal feedback to effectively guide policy updates. Experimental results demonstrate that MindOmni outperforms existing models, achieving impressive performance on both understanding and generation benchmarks, meanwhile showcasing advanced fine-grained reasoning generation capabilities, especially with mathematical reasoning instruction.

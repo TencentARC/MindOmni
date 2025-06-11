@@ -12,10 +12,6 @@ from diffusers.models import AutoencoderKL
 from transformers import AutoProcessor
 import re
 from qwen_vl_utils import process_vision_info
-try:
-    import torch_npu
-except Exception as e:
-    print(e)
 
 logger = logging.get_logger(__name__)
 
@@ -46,8 +42,6 @@ class MindOmni:
         if device is None:
             if torch.cuda.is_available():
                 self.device = torch.device("cuda")
-            elif torch_npu.npu.is_available():
-                self.device = torch.device("npu")
             elif torch.backends.mps.is_available():
                 self.device = torch.device("mps")
             else:
@@ -56,19 +50,16 @@ class MindOmni:
 
     @classmethod
     def from_pretrained(cls, model_path):
-        if not os.path.exists(model_path):
-            cache_folder = os.getenv('HF_HUB_CACHE')
-            model_path = snapshot_download(repo_id=model_path,
-                                           cache_dir=cache_folder)
+        model_path = snapshot_download(repo_id=model_path)
         mllm = MindOmniMLLM.from_pretrained(os.path.join(model_path, 'mllm'))
         image_decoder = OmniGen.from_pretrained(os.path.join(model_path, 'image_decoder'))
         connector = MindOmniConnector(mllm.config, image_decoder.llm.config, 2).connector
         connector_state = load_file(os.path.join(model_path, 'connector.safetensors'))
         connector.load_state_dict(connector_state)
-        vae = AutoencoderKL.from_pretrained(os.path.join(model_path, "vae"))
+        vae = AutoencoderKL.from_pretrained(os.path.join(model_path, 'vae'))
         processor = OmniGenProcessor.from_pretrained(os.path.join(model_path, 'image_decoder'))
         mllm_processor = AutoProcessor.from_pretrained(os.path.join(model_path, 'mllm'))
-        logger.info("Preparing MindOmni")
+        logger.info("MindOmni has been loaded.")
         return cls(mllm, image_decoder, connector, vae, processor, mllm_processor)
 
     def to(self, device: Union[str, torch.device] = None, dtype: Union[str, torch.device] = None):
@@ -162,9 +153,9 @@ class MindOmni:
             images=image_inputs,
             videos=video_inputs,
             padding=True,
-            return_tensors="pt",
+            return_tensors='pt',
         )
-        inputs = inputs.to("npu")
+        inputs = inputs.to(self.device)
 
         if use_cot:
             # Inference: Generation of the output
@@ -198,9 +189,24 @@ class MindOmni:
         return messages, prompt_, context_hidden_state
 
     def generate_image(self, height, width, guidance_scale, inference_steps, separate_cfg_infer, offload_model, seed, max_input_image_size,
-                       text, NEGATIVE_PROMPT, input_llm_images, do_sample, temperature, max_new_tokens, only_understand, use_cot=False):
+                       text, NEGATIVE_PROMPT, input_llm_images, do_sample, temperature, max_new_tokens, only_understand, use_cot=False,
+                       cascade_thinking=False):
         gen_pipe = ImageDecoderPipeline(self.vae, self.image_decoder, self.connector, self.processor)
         message, prompt_, context_hidden_state = self.get_mllm_hidden_state(text, input_llm_images, do_sample, temperature, max_new_tokens, only_understand, use_cot=use_cot)
+        if cascade_thinking and use_cot:
+            answer_text = re.search(r'<answer>(.*)', prompt_, re.S)
+            think_text = re.search(r'<think>(.*?)</think>', prompt_, re.S)
+            if answer_text:
+                text = answer_text.group(1).strip()
+            elif think_text:
+                text = think_text.group(1).strip()
+            else:
+                text = prompt_.strip()
+            if len(text) > 0:
+                message, cascade_prompt_, context_hidden_state = self.get_mllm_hidden_state(
+                    text, input_llm_images, do_sample, temperature, max_new_tokens, only_understand, use_cot=use_cot)
+                prompt_ = f'{prompt_}\n\ncascade_thinking:{cascade_prompt_}'
+
         neg_message, neg_prompt_, neg_context_hidden_state = self.get_mllm_hidden_state(NEGATIVE_PROMPT, None, do_sample, temperature, max_new_tokens, only_understand, use_cot=False)
         print(message)
         output = gen_pipe(
