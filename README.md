@@ -9,6 +9,7 @@
 <a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/MindOmni-HomePage-yellow?logo=huggingface&logoColor=yellow'></a> 
 <a href='https://huggingface.co/spaces/stevengrove/MindOmni'><img src='https://img.shields.io/badge/MindOmni-Demo-blue?logo=probot&logoColor=blue'></a> 
 
+<small>**If it helps, please ⭐ our GitHub project which means a lot for us to develop this project.**</small>
 
 ## 📚 News
 - [2025/05/19] 🔥 We release our [paper](https://arxiv.org/pdf/2406.02395)
