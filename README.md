@@ -9,6 +9,10 @@
 <a href='https://MindOmni.github.io/'><img src='https://img.shields.io/badge/MindOmni-HomePage-yellow?logo=huggingface&logoColor=yellow'></a> 
 <a href='https://huggingface.co/spaces/stevengrove/MindOmni'><img src='https://img.shields.io/badge/MindOmni-Demo-blue?logo=probot&logoColor=blue'></a> 
 
+	
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mindomni-unleashing-reasoning-generation-in/image-generation-on-wise)](https://paperswithcode.com/sota/image-generation-on-wise?p=mindomni-unleashing-reasoning-generation-in)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/mindomni-unleashing-reasoning-generation-in/text-to-image-generation-on-geneval)](https://paperswithcode.com/sota/text-to-image-generation-on-geneval?p=mindomni-unleashing-reasoning-generation-in)
+
 <small>**If it helps, please ⭐ our GitHub project which means a lot for us to develop this project. 🙏🏻**</small>
 
 ## 📚 News
