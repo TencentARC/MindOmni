@@ -147,7 +147,7 @@ Code in this repository is built upon several public repositories. Thanks for th
 
 - [ &#10004; ] Release the paper.
 - [  &#10004; ] Release the checkpoints and inference demo.
-- [ &nbsp; &nbsp; ] Release the training scripts.
+- [ &#10004; ] Release the training scripts.
 
 <!-- ## ☑️ LICENSE
 Our codes are under [MIT](https://opensource.org/license/MIT) license. -->
