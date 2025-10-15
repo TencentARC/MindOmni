@@ -29,11 +29,11 @@ from safetensors.torch import save_file
 
 from diffusers.models import AutoencoderKL
 
-from OmniGen import OmniGen, OmniGenProcessor
-from OmniGen import forward as qwen_forward
-from OmniGen.train_helper import DatasetFromJson, TrainDataCollator, X2IWebDataset, ShortLongWebDataset
-from OmniGen.train_helper import training_losses, validate_func
-from OmniGen.utils import (
+from pretrain import OmniGen, OmniGenProcessor
+from pretrain import forward as qwen_forward
+from pretrain.train_helper import DatasetFromJson, TrainDataCollator, X2IWebDataset, ShortLongWebDataset
+from pretrain.train_helper import training_losses, validate_func
+from pretrain.utils import (
     create_logger,
     update_ema,
     requires_grad,
